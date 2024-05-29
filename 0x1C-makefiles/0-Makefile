@@ -1,0 +1,6 @@
+#task 0
+#create first makefile
+#the executable name is school
+
+all : main.c school.c
+	        gcc main.c school.c -o school

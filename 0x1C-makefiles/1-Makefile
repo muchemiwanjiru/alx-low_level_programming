@@ -1,0 +1,7 @@
+#all rule builds your executable
+#use CC as your executable
+#use SRC
+CC = gcc
+SRC = main.c school.c
+all: $(SRC)
+	        $(CC) $(SRC) -o school
