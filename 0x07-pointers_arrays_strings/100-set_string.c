@@ -1,24 +1,37 @@
-julien@ubuntu:~/0x07$ cat 100-main.c
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - check the code
+ * set_string-the function sets the value of a poiner to a char
+ * @s: where we are getting the value
+ * @to: where we are setting the value
  *
- * Return: Always 0.
+ * Return: returns nothing
  */
-int main(void)
-{
-    char *s0 = "Bob Dylan";
-    char *s1 = "Robert Allen";
 
-    printf("%s, %s\n", s0, s1);
-    set_string(&s1, s0);
-    printf("%s, %s\n", s0, s1);
-    return (0);
+void set_string(char **s, char *to)
+{
+	*s = to;
 }
-julien@ubuntu:~/0x07$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 100-main.c 100-set_string.c -o 100-set_string
-julien@ubuntu:~/0x07$ ./100-set_string 
-Bob Dylan, Robert Allen
-Bob Dylan, Bob Dylan
-julien@ubuntu:~/0x07$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
