@@ -1,50 +1,40 @@
-#include "search_algos.h"
+#include <stdio.h>
 #include <math.h>
+#include "search_algos.h"
 
 /**
- * jump_search - searches for a value in a sorted array of
- * integers using the Jump search algorithm
+ * jump_search - Searches for a value in a sorted array of integers
+ * using the Jump search algorithm
+ * @array: Pointer to the first element of the array to search in
+ * @size: Number of elements in the array
+ * @value: Value to search for
  *
- * @array: a pointer to the first element of the array to search in
- * @size: the number of elements in array
- * @value: the value to search for
- *
- * Return: return the first index where value is located or -1
+ * Return: The first index where value is located, or -1 if not present
  */
-
 int jump_search(int *array, size_t size, int value)
 {
-	size_t index = 0, prev_index = 0;
+    size_t step = sqrt(size);
+    size_t prev = 0;
+    size_t i;
 
-	if (!array)
-		return (-1);
+    if (array == NULL)
+        return (-1);
 
-	while (array[index] < value)
-	{
-		printf("Value checked array[%ld] = [%d]\n", index,
-				array[index]);
-		prev_index = index;
-		index += sqrt(size);
-		if (index >= size)
-			break;
-	}
-	printf("Value found between indexes [%ld] and [%ld]\n", prev_index,
-			index);
+    while (array[prev] < value && prev < size)
+    {
+        printf("Value checked array[%lu] = [%d]\n", (unsigned long)prev, array[prev]);
+        prev += step;
+    }
 
-	while (array[prev_index] < value)
-	{
-		printf("Value checked array[%ld] = [%d]\n", prev_index,
-				array[prev_index]);
-		prev_index++;
-		if (prev_index >= size)
-			return (-1);
-	}
+    printf("Value found between indexes [%lu] and [%lu]\n", (unsigned long)(prev - step), (unsigned long)prev);
 
-	if (array[prev_index] == value)
-	{
-		printf("Value checked array[%ld] = [%d]\n", prev_index,
-				array[prev_index]);
-		return (prev_index);
-	}
-	return (-1);
+    for (i = prev - step; i < size && i <= prev; i++)
+    {
+        printf("Value checked array[%lu] = [%d]\n", (unsigned long)i, array[i]);
+        if (array[i] == value)
+            return (i);
+    }
+
+    return (-1);
 }
+
