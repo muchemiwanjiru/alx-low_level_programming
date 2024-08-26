@@ -1,3 +1,5 @@
 #!/bin/bash
-gcc -save-temps $CFILE -o $CFILE.o
+
+# Compile the C file without linking
+gcc -c "$CFILE"
 
